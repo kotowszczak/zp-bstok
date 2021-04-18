@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Zp_Bialystok
- * @since Zp Bialystok 1.0
+ * @since Twenty Twenty-One 1.0
  */
 
 $blog_info    = get_bloginfo( 'name' );
@@ -13,15 +13,11 @@ $show_title   = ( true === get_theme_mod( 'display_title_and_tagline', true ) );
 $header_class = $show_title ? 'site-title' : 'screen-reader-text';
 
 ?>
-
-<?php if ( has_custom_logo() && $show_title ) : ?>
-	<div class="site-logo"><?php the_custom_logo(); ?></div>
-<?php endif; ?>
-
 <div class="site-branding">
-
-	<?php if ( has_custom_logo() && ! $show_title ) : ?>
+	<?php if ( has_custom_logo() ) : ?>
 		<div class="site-logo"><?php the_custom_logo(); ?></div>
+	<?php else: ?>
+		<div class="site-logo"></div>
 	<?php endif; ?>
 
 	<?php if ( $blog_info ) : ?>
@@ -34,9 +30,11 @@ $header_class = $show_title ? 'site-title' : 'screen-reader-text';
 		<?php endif; ?>
 	<?php endif; ?>
 
-	<?php if ( $description && true === get_theme_mod( 'display_title_and_tagline', true ) ) : ?>
-		<p class="site-description">
-			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput ?>
-		</p>
-	<?php endif; ?>
+    <div class="motto">
+        Przyjmij każdego takim jakim jest. <br />
+        Każdy ma wady, nawet najlepszy. <br />
+        Jesteśmy tylko ludźmi - nie aniołami. <br />
+
+        Casar Flaischlen.
+    </div>
 </div><!-- .site-branding -->

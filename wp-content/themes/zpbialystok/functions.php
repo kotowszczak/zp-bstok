@@ -73,6 +73,7 @@ if ( ! function_exists( 'zp_bialystok_setup' ) ) {
 
 		register_nav_menus(
 			array(
+				'top' => esc_html__( 'Top menu', 'zpbialystok' ),
 				'primary' => esc_html__( 'Primary menu', 'zpbialystok' ),
 				'footer'  => __( 'Secondary menu', 'zpbialystok' ),
 			)
@@ -397,6 +398,11 @@ function zp_bialystok_scripts() {
 	// Note, the is_IE global variable is defined by WordPress and is used
 	// to detect if the current browser is internet explorer.
 	global $is_IE, $wp_scripts;
+
+	wp_enqueue_style( 'zp-bialystok-material-icons',  'https://fonts.googleapis.com/icon?family=Material+Icons', array());
+
+	wp_enqueue_style( 'zp-bialystok-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), wp_get_theme()->get( 'Version' ) );
+
 	if ( $is_IE ) {
 		// If IE 11 or below, use a flattened stylesheet with static values replacing CSS Variables.
 		wp_enqueue_style( 'zp-bialystok-style', get_template_directory_uri() . '/assets/css/ie.css', array(), wp_get_theme()->get( 'Version' ) );
@@ -404,6 +410,8 @@ function zp_bialystok_scripts() {
 		// If not IE, use the standard stylesheet.
 		wp_enqueue_style( 'zp-bialystok-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
 	}
+
+	wp_enqueue_style( 'zp-bialystok-wcag', get_template_directory_uri() . '/assets/css/wcag.css', array(), wp_get_theme()->get( 'Version' ) );
 
 	// RTL styles.
 	wp_style_add_data( 'zp-bialystok-style', 'rtl', 'replace' );
@@ -627,3 +635,19 @@ function zpbialystok_add_ie_class() {
 	<?php
 }
 add_action( 'wp_footer', 'zpbialystok_add_ie_class' );
+
+
+function zpbialystok_asset($path)
+{
+	return get_template_directory_uri() . $path ;
+}
+
+function zp_get_page_last_modified_date()
+{
+	global $wpdb;
+
+	/** @var wpdb $wpdb */
+	$result = $wpdb->get_row( "SELECT max(post_modified) last_modified_date FROM {$wpdb->prefix}posts WHERE post_type = 'page'");
+
+	return substr($result->last_modified_date, 0, 10);
+}

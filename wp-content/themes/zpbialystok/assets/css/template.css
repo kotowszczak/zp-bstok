@@ -1,0 +1,294 @@
+
+
+body {
+    background-color: #F1F1F1;
+    font-family:  Verdana, san-serif;
+}
+
+.uc {
+    color: #575757;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#header-opcje {
+    display: none;
+}
+
+#header {
+    background-color: #0751AB;
+    color: white;
+    height: 180px;
+    display: flex;
+    position:relative;
+    align-items: center!important;
+}
+
+#header .logo {
+    width: 20%;
+    height: 180px;
+}
+
+
+#header .title {
+    width: 80%;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+}
+
+#header .title a {
+    color: white;
+    text-decoration: none;
+}
+
+#header .title a:hover,
+#header .title a:active,
+#header .title a:visited {
+    text-decoration: none;
+}
+
+#header .motto {
+    font-style: italic;
+    font-size: 13px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 280px;
+    text-align: right;
+}
+
+.nav-item.bip .nav-title {
+    display: none;
+}
+
+.nav-item.bip img {
+    height: 20px;
+}
+
+#navbar a.nav-link {
+    font-size: 17px;
+    color: #575757;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#navbar ul.nav{
+    width: 100%;
+}
+
+#navbar a.nav-link:hover {
+    text-decoration: none;
+    color: #0000FF;
+}
+
+#wcag-btns {
+    padding: 10px 0;
+    display: block;
+    width: 45px;
+    position: fixed;
+    top: 40%;
+    right: 0;
+    z-index: 1050;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: right;
+}
+
+#wcag-btns .material-icons {
+    font-size: 32px;
+}
+
+#wcag-btns a {
+    color: #efefef;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+#wcag-btns a:hover {
+    color: #0000FF;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+#main-container {
+    padding: 0;
+}
+
+#main-container aside.left-sidebar {
+    width: 20%;
+}
+body.home aside.left-sidebar li.nav-item.home-link {
+    display:none;
+}
+aside.left-sidebar ul.nav {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+aside.left-sidebar li.nav-item {
+    /* margin-bottom: 15px; */
+    font-size: 19px;
+    /* background-color: #f8f8f8; */
+}
+
+aside.left-sidebar a.nav-link {
+    color: #575757;
+    font-weight: bold;
+    /* padding: 10px 15px; */
+    font-size: 17px;
+    /*-webkit-box-shadow: 13px 13px 35px 0px rgba(214, 214, 214, 0.5);
+    -moz-box-shadow: 13px 13px 35px 0px rgba(214, 214, 214, 0.5);
+    box-shadow: 13px 13px 35px 0px rgba(214, 214, 214, 0.5); */
+}
+
+aside.left-sidebar a.nav-link:hover {
+    color: #0000FF;
+    text-decoration: none;
+}
+
+#main-container .page-contents {
+    width: 80%;
+}
+
+body.home #main-container .page-contents {
+    background-image: url("../img/zp-bialystok-placowka.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 750px;
+    background-clip: content-box;
+    background-size: cover;
+    color: white;
+}
+
+body.home #main-container .blur {
+    background: rgba(22, 60, 107, 0.4);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    filter: blur(0px);
+    min-height: 750px;
+}
+
+body.home #main-container .contents {
+    position: absolute;
+    top: 100px;
+    left: 150px;
+    font-size: 30px;
+    color: #f1f1f1;
+}
+
+body.home #main-container .contents p {
+    padding-left: 65px;
+}
+
+body.home #main-container .contents span.material-icons {
+    margin-left: -65px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+}
+
+body.home #main-container .contents .fax {
+    font-size: 16px;
+}
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+    #main-container aside.left-sidebar {
+        width: 30%;
+    }
+
+    #main-container .page-contents {
+        width: 70%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+    #main-container aside.left-sidebar {
+        width: 30%;
+    }
+
+    #main-container .page-contents {
+        width: 70%;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    #main-container aside.left-sidebar {
+        display: none;
+    }
+
+    #main-container .page-contents {
+        width: 100%;
+    }
+
+    body.home #main-container .contents {
+        position: static;
+        padding: 20px 15px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+
+    body.home #main-container .contents {
+        font-size: 18px;
+    }
+}
+
+/* === Footer === */
+#footer-menu {
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+    color: #000000;
+    padding: 5px 0;
+}
+
+#footer-menu a.nav-link {
+    color: #575757;
+}
+
+#footer-menu a.nav-link:hover {
+    color: #0000FF;
+}
+
+#footer .update-date {
+    font-size: 14px;
+    text-align: right;
+    color: #575757;
+    margin-right: 10px;
+    float: left;
+    font-weight: bold;
+    margin-top: -25px;
+}
+
