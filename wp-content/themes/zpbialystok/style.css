@@ -5953,18 +5953,25 @@ body {
     height: 20px;
 }
 
-#navbar a.nav-link {
+#top-navigation li.menu-item a {
     font-size: 17px;
     color: #575757;
     font-weight: bold;
-    text-decoration: none;
+	text-decoration: none;
+	text-transform: uppercase;
 }
 
-#navbar ul.nav{
+#top-navigation ul.nav {
     width: 100%;
 }
 
-#navbar a.nav-link:hover {
+#top-navigation li.menu-item  {
+	display: block;
+	padding: .5rem 1rem;
+
+}
+
+#top-navigation li.menu-item a:hover {
     text-decoration: none;
     color: #0000FF;
 }
