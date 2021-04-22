@@ -20,10 +20,10 @@
 		//get_template_part( 'template-parts/footer/footer-widgets' );
 	?>
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<footer id="footer">
 		<?php if ( has_nav_menu( 'footer' ) ) : ?>
-			<nav id="" aria-label="<?php esc_attr_e( 'Secondary menu', 'zpbialystok' ); ?>" class="footer-navigation">
-				<ul class="footer-navigation-wrapper">
+			<nav id="footer-menu" aria-label="<?php esc_attr_e( 'Secondary menu', 'zpbialystok' ); ?>" class="footer-navigation">
+				<ul class="nav justify-content-end">
 					<?php
 					wp_nav_menu(
 						array(
@@ -37,17 +37,14 @@
 						)
 					);
 					?>
-				</ul><!-- .footer-navigation-wrapper -->
-			</nav><!-- .footer-navigation -->
+				</ul><!-- .nav justify-content-end -->
+			</nav><!-- #footer-menu -->
 		<?php endif; ?>
 
 		<div class="update-date">
-		<?php
-			echo 'Data aktualizacji: ' . '<span class="date">' . zp_get_page_last_modified_date() . '</span>';
-		?>
+			Data aktualizacji: <span class="date">11.04.2021</span>
 		</div>
-	</footer><!-- #colophon -->
-
+	</footer>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

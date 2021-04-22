@@ -6160,15 +6160,24 @@ body.home #main-container .contents .fax {
     font-weight: normal;
     text-decoration: none;
     color: #000000;
-    padding: 5px 0;
+	padding: 5px 0;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
-#footer-menu a.nav-link {
-    color: #575757;
+#footer-menu a {
+	color: #575757;
+
 }
 
-#footer-menu a.nav-link:hover {
-    color: #0000FF;
+#footer-menu li.menu-item {
+    display: block;
+    padding: .5rem 1rem;
+}
+
+#footer-menu a:hover {
+	color: #0000FF;
+	text-decoration: none;
 }
 
 #footer .update-date {
