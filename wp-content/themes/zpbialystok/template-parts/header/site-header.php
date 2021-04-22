@@ -17,6 +17,3 @@ $wrapper_classes .= has_nav_menu( 'primary' ) ? ' has-menu' : '';
 	<?php get_template_part( 'template-parts/header/site-branding' ); ?>
 	<?php get_template_part( 'template-parts/header/top-nav' ); ?>
 </header><!-- #masthead -->
-
-
-<?php get_template_part( 'template-parts/header/site-nav' ); ?>

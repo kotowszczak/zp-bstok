@@ -156,7 +156,7 @@ Zakład Poprawczy Białystok WordPress Theme, (C) 2020 WordPress.org
 	--global--color-black: #000;
 	--global--color-dark-gray: #28303d;
 	--global--color-gray: #39414d;
-	--global--color-light-gray: #f0f0f0;
+	--global--color-light-gray: #f1f1f1;
 	--global--color-green: #d1e4dd;
 	--global--color-blue: #d1dfe4;
 	--global--color-purple: #d1d1e4;
@@ -173,7 +173,7 @@ Zakład Poprawczy Białystok WordPress Theme, (C) 2020 WordPress.org
 
 	/* Headings */
 	--global--color-primary-hover: var(--global--color-primary);
-	--global--color-background: var(--global--color-green);
+	--global--color-background:var(--global--color-light-gray);
 
 	/* Mint, default body background */
 	--global--color-border: var(--global--color-primary);
@@ -847,7 +847,6 @@ template {
  * Top Level Wrappers (header, main, footer)
  * - Set vertical padding and horizontal margins
  */
-.site-main,
 .widget-area,
 .site-footer {
 	padding-top: var(--global--spacing-vertical);
@@ -1661,7 +1660,6 @@ a:hover {
 
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
-	text-decoration: underline 1px dotted currentColor;
 	text-decoration-skip-ink: none;
 	background: rgba(255, 255, 255, 0.9);
 }
@@ -6029,50 +6027,52 @@ body {
     font-feature-settings: 'liga';
 }
 
-#main-container {
+#content {
     padding: 0;
 }
 
-#main-container aside.left-sidebar {
+#site-navigation {
     width: 20%;
 }
 
-body.home aside.left-sidebar li.nav-item.home-link {
-    display:none;
+body.home #site-navigation li.nav-item.home-link {
+    display: none;
 }
 
-aside.left-sidebar ul.nav {
+#site-navigation ul.nav {
     margin-right: 15px;
     margin-left: 15px;
 }
 
-aside.left-sidebar li.nav-item {
+#site-navigation li.menu-item {
     /* margin-bottom: 15px; */
     font-size: 19px;
     /* background-color: #f8f8f8; */
 }
 
-aside.left-sidebar a.nav-link {
+#site-navigation li.menu-item a {
     color: #575757;
     font-weight: bold;
     /* padding: 10px 15px; */
-    font-size: 17px;
+	font-size: 17px;
+    display: block;
+    padding: .5rem 1rem;
     /*-webkit-box-shadow: 13px 13px 35px 0px rgba(214, 214, 214, 0.5);
     -moz-box-shadow: 13px 13px 35px 0px rgba(214, 214, 214, 0.5);
     box-shadow: 13px 13px 35px 0px rgba(214, 214, 214, 0.5); */
 }
 
-aside.left-sidebar a.nav-link:hover {
+#site-navigation li.menu-item a:hover {
     color: #0000FF;
     text-decoration: none;
 }
 
-#main-container .page-contents {
+#primary {
     width: 80%;
 }
 
-body.home #main-container .page-contents {
-    background-image: url("../asset/images/zp-bialystok-placowka.jpg");
+body.home #primary  {
+    background-image: url("assets/images/zp-bialystok-placowka.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-repeat: no-repeat;
@@ -6083,7 +6083,7 @@ body.home #main-container .page-contents {
     color: white;
 }
 
-body.home #main-container .blur {
+body.home #content .site-main {
     background: rgba(22, 60, 107, 0.4);
     position: relative;
     width: 100%;
@@ -6092,7 +6092,7 @@ body.home #main-container .blur {
     min-height: 750px;
 }
 
-body.home #main-container .contents {
+body.home #content article.page {
     position: absolute;
     top: 100px;
     left: 150px;
@@ -6100,54 +6100,54 @@ body.home #main-container .contents {
     color: #f1f1f1;
 }
 
-body.home #main-container .contents p {
+body.home #content article.page p {
     padding-left: 65px;
 }
 
-body.home #main-container .contents span.material-icons {
+body.home #content article.page span.material-icons {
     margin-left: -65px;
     background-color: rgba(0, 0, 0, 0.4);
     padding: 15px;
 }
 
-body.home #main-container .contents .fax {
+body.home #content article.page .fax {
     font-size: 16px;
 }
 
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (max-width: 1200px) {
-    #main-container aside.left-sidebar {
+    #site-navigation {
         width: 30%;
     }
 
-    #main-container .page-contents {
+    #content .page-contents {
         width: 70%;
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
-    #main-container aside.left-sidebar {
+    #site-navigation {
         width: 30%;
     }
 
-    #main-container .page-contents {
+    #primary  {
         width: 70%;
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-    #main-container aside.left-sidebar {
+    #site-navigation {
         display: none;
     }
 
-    #main-container .page-contents {
+    #primary {
         width: 100%;
     }
 
-    body.home #main-container .contents {
+    body.home #content article.page {
         position: static;
         padding: 20px 15px;
     }
@@ -6155,8 +6155,7 @@ body.home #main-container .contents .fax {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) {
-
-    body.home #main-container .contents {
+    body.home #content article.page {
         font-size: 18px;
     }
 }
