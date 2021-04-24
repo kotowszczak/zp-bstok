@@ -100,8 +100,8 @@ Zakład Poprawczy Białystok WordPress Theme, (C) 2020 WordPress.org
 :root {
 
 	/* Font Family */
-	--global--font-primary: var(--font-headings, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
-	--global--font-secondary: var(--font-base, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+	--global--font-primary: var(--font-headings, -apple-system, BlinkMacSystemFont,"Verdana", san-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
+	--global--font-secondary: var(--font-base, -apple-system, BlinkMacSystemFont,"Verdana", san-serif, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif);
 
 	/* Font Size */
 	--global--font-size-base: 1.25rem;
@@ -239,7 +239,7 @@ Zakład Poprawczy Białystok WordPress Theme, (C) 2020 WordPress.org
 	--branding--title--font-size: var(--global--font-size-lg);
 	--branding--title--font-size-mobile: var(--heading--font-size-h4);
 	--branding--title--font-weight: normal;
-	--branding--title--text-transform: uppercase;
+	--branding--title--text-transform: normal;
 	--branding--description--font-family: var(--global--font-secondary);
 	--branding--description--font-size: var(--global--font-size-sm);
 	--branding--description--font-family: var(--global--font-secondary);
@@ -3733,7 +3733,7 @@ table.wp-calendar-table caption {
 	font-family: var(--heading--font-family);
 	font-weight: var(--heading--font-weight);
 	line-height: 0.66;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	font-style: normal;
 	float: left;
 	margin: 0.1em 0.1em 0 0;
