@@ -766,17 +766,6 @@ template {
 	max-width: 100%;
 }
 
-.widget-area,
-.pagination,
-.comments-pagination,
-.post-navigation,
-.site-footer,
-.alignwide,
-.wide-max-width {
-	max-width: var(--responsive--alignwide-width);
-	margin-left: auto;
-	margin-right: auto;
-}
 
 .alignfull,
 .wp-block-group .wp-block-group__inner-container > *.alignfull,
@@ -3955,8 +3944,8 @@ table.wp-calendar-table caption {
 }
 
 .singular .entry-header {
-	border-bottom: 2px solid var(--global--color-border);
-	padding-bottom: var(--global--spacing-vertical);
+	border-bottom: 1px solid var(--global--color-border);
+	padding-bottom: 5px;
 	margin-bottom:  var(--global--spacing-vertical);
 }
 
@@ -5916,6 +5905,7 @@ body {
 .site-branding .site-title a {
     color: white;
     text-decoration: none;
+	font-weight: bold;
 }
 
 .site-branding .site-title a:hover,
