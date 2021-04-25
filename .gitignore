@@ -3,6 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 /wp-config.php
+/wp-content/uploads/*
 
 # User-specific files
 *.rsuser

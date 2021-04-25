@@ -6190,6 +6190,16 @@ body.home #content article.page .fax {
     margin-right: 10px;
     float: left;
     font-weight: bold;
-    margin-top: -25px;
+    margin-top: -50px;
 }
 
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 780px) {
+    #footer .update-date {
+        margin-top:0px;
+    }
+}
+
+#menu-item-40 img {
+	height: 24px;
+}

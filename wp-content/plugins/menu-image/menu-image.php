@@ -67,7 +67,7 @@ class WP_Menu_Image
     public function __construct()
     {
     }
-    
+
     /**
      * Build the menu image item settings HTML.
      */
@@ -91,7 +91,7 @@ class WP_Menu_Image
         echo  $output ;
         wp_die();
     }
-    
+
     /**
      * Init Menu Image.
      */
@@ -150,7 +150,7 @@ class WP_Menu_Image
             3
         );
         // Add support for Max Megamenu.
-        
+
         if ( function_exists( 'max_mega_menu_is_enabled' ) ) {
             add_filter(
                 'megamenu_nav_menu_link_attributes',
@@ -165,8 +165,8 @@ class WP_Menu_Image
                 2
             );
         }
-        
-        
+
+
         if ( !get_option( 'menu_image_disable_mobile' ) || get_option( 'menu_image_disable_mobile' ) && !wp_is_mobile() ) {
             // Filters.
             add_filter( 'wp_setup_nav_menu_item', array( $this, 'menu_image_wp_setup_nav_menu_item' ) );
@@ -190,11 +190,11 @@ class WP_Menu_Image
                 4
             );
         }
-        
+
         // Menu image requires FontAwesome plugin notice.
         add_action( 'wp_ajax_dismiss_wp_menu_image_fa', array( $this, 'dismiss_wp_menu_image_fa_notice' ) );
     }
-    
+
     /**
      * Admin init action with lowest execution priority
      */
@@ -203,7 +203,7 @@ class WP_Menu_Image
         // Admin Scripts.
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
     }
-    
+
     /**
      * Add Image sizes
      */
@@ -226,14 +226,14 @@ class WP_Menu_Image
             'menu-' . $this->image_size_3 => array( $image_parts_3[0], $image_parts_3[1], false ),
         );
     }
-    
+
     /*
      * Create a helper function for easy SDK access.
      */
     public function mi_fs()
     {
         global  $mi_fs ;
-        
+
         if ( !isset( $mi_fs ) ) {
             // Activate multisite network integration.
             if ( !defined( 'WP_FS__PRODUCT_4123_MULTISITE' ) ) {
@@ -261,10 +261,10 @@ class WP_Menu_Image
                 'is_live'         => true,
             ) );
         }
-        
+
         return $mi_fs;
     }
-    
+
     /**
      * Filter adds additional validation for image type
      *
@@ -281,7 +281,7 @@ class WP_Menu_Image
         $fileExtension = pathinfo( $path, PATHINFO_EXTENSION );
         return in_array( $fileExtension, $this->additionalDisplayableImageExtensions );
     }
-    
+
     /**
      * Create the Menu Image options page
      */
@@ -297,21 +297,21 @@ class WP_Menu_Image
             150
         );
     }
-    
+
     /**
      * Validate Options of the submission form.
      */
     public function handle_options_form()
     {
-        
+
         if ( !isset( $_POST['menu_image_form'] ) || !wp_verify_nonce( $_POST['menu_image_form'], 'menu_image_options_update' ) ) {
             ?>
 			<div class="error">
-			   <p><?php 
+			   <p><?php
             _e( 'Sorry, your nonce was not correct. Please try again.', 'menu-image' );
             ?></p>
-			</div> 
-			<?php 
+			</div>
+			<?php
         } else {
             // Handle our form data.
             $enable_menu_image_hover = '0';
@@ -331,7 +331,7 @@ class WP_Menu_Image
             $image_parts_2 = explode( 'x', $menu_image_size_2 );
             $image_parts_3 = explode( 'x', $menu_image_size_3 );
             // Validate the menu image size format.
-            
+
             if ( 2 === count( $image_parts_1 ) && 2 === count( $image_parts_2 ) && 2 === count( $image_parts_3 ) ) {
                 update_option( 'menu_image_size_1', $menu_image_size_1 );
                 update_option( 'menu_image_size_2', $menu_image_size_2 );
@@ -340,25 +340,25 @@ class WP_Menu_Image
                 update_option( 'menu_image_hover', $enable_menu_image_hover );
                 ?>
 				<div class="updated">
-					<p><?php 
+					<p><?php
                 _e( 'Your Menu Image settings were saved!', 'menu-image' );
                 ?></p>
 				</div>
-				<?php 
+				<?php
             } else {
                 ?>
 				<div class="error">
-					<p><?php 
+					<p><?php
                 _e( 'Sorry, your image size format is not correct. Please try again.', 'menu-image' );
                 ?></p>
-				</div> 
-				<?php 
+				</div>
+				<?php
             }
-        
+
         }
-    
+
     }
-    
+
     /**
      * Create the Menu Image options page HTML
      */
@@ -414,98 +414,98 @@ class WP_Menu_Image
 			}
 		</style>
 		<div class="wrap">
-			<h1><?php 
+			<h1><?php
         _e( 'Menu Image Settings', 'menu-image' );
         ?></h1>
 			<div class='menu-image-settings-header'>
-				<img src='<?php 
+				<img src='<?php
         echo  MENU_IMAGE_PLUGIN_URL ;
         ?>includes/assets/img/menu-image-60.png' class="menu-image-logo-admin">
-				<span class="menu-image-settings-h1"><?php 
+				<span class="menu-image-settings-h1"><?php
         _e( 'Menu Image - v' . MENU_IMAGE_VERSION, 'menu-image' );
         ?></span>
 			</div>
 			<div class="menu-image-settings-wrapper">
 				<form method="POST">
-					<?php 
+					<?php
         wp_nonce_field( 'menu_image_options_update', 'menu_image_form' );
         ?>
-					<?php 
+					<?php
         do_settings_sections( 'menu-image-general-settings-group' );
         ?>
-					<?php 
+					<?php
         do_settings_sections( 'menu-image-settings-group' );
         ?>
-					<?php 
+					<?php
         settings_fields( 'menu-image-settings-group' );
         ?>
 					<input type="hidden" name="updated" value="true" />
-					<?php 
+					<?php
         submit_button();
         ?>
 				</form>
 			</div>
 		</div>
-		<?php 
+		<?php
     }
-    
+
     /*
      * Render the HTML of menu_image_size_1 option.
      */
     function menu_image_size_1_render()
     {
         ?>
-		<input name="menu_image_size_1" type="text" value="<?php 
+		<input name="menu_image_size_1" type="text" value="<?php
         echo  get_option( 'menu_image_size_1', '24x24' ) ;
-        ?>" /><span class="helper"><?php 
+        ?>" /><span class="helper"><?php
         _e( 'Use this format (24x24), width and height.', 'menu-image' );
         ?></span>
-		<?php 
+		<?php
     }
-    
+
     /*
      * Render the HTML of menu_image_size_2 option.
      */
     function menu_image_size_2_render()
     {
         ?>
-		<input name="menu_image_size_2" type="text" value="<?php 
+		<input name="menu_image_size_2" type="text" value="<?php
         echo  get_option( 'menu_image_size_2', '36x36' ) ;
-        ?>" /><span class="helper"><?php 
+        ?>" /><span class="helper"><?php
         _e( 'Use this format (36x36), width and height.', 'menu-image' );
         ?></span>
-		<?php 
+		<?php
     }
-    
+
     /*
      * Render the HTML of menu_image_size_3 option.
      */
     function menu_image_size_3_render()
     {
         ?>
-		<input name="menu_image_size_3" type="text" value="<?php 
+		<input name="menu_image_size_3" type="text" value="<?php
         echo  get_option( 'menu_image_size_3', '48x48' ) ;
-        ?>" /><span class="helper"><?php 
+        ?>" /><span class="helper"><?php
         _e( 'Use this format (48x48), width and height.', 'menu-image' );
         ?></span>
 		</br></br><span class="helper"> If you change the image sizes after uploading the images you will need to regenerate all thumbnails using this </span><a href="https://wordpress.org/plugins/regenerate-thumbnails/" target="_blank">plugin</a>.<p>It will also be necessary to select the icon image again in the menu items if you replaced any of the used custom image sizes.</p>
-		<?php 
+		<?php
     }
-    
+
     /*
      * Render the HTML of menu_image_hover option.
      */
     function menu_image_hover_render()
     {
         ?>
-		<input name="menu_image_hover" type="checkbox" value="1" <?php 
+		<input name="menu_image_hover" type="checkbox" value="1" <?php
         checked( '1', get_option( 'menu_image_hover', '1' ) );
-        ?> /><span class="helper"><?php 
+        ?> /><span class="helper"><?php
         _e( 'Enable the image on hover field', 'menu-image' );
         ?></span>
-		<?php 
+		<?php
     }
-    
+
     /*
      * Register Menu Image settings
      */
@@ -552,7 +552,7 @@ class WP_Menu_Image
             'menu_image_sizes_section'
         );
     }
-    
+
     /**
      * Initialization action.
      *
@@ -575,7 +575,7 @@ class WP_Menu_Image
         }
         load_plugin_textdomain( 'menu-image', false, basename( dirname( __FILE__ ) ) . '/languages' );
     }
-    
+
     /**
      * Adding images as screen options.
      *
@@ -591,7 +591,7 @@ class WP_Menu_Image
             'image' => __( 'Image', 'menu-image' ),
         );
     }
-    
+
     /**
      * Saving post action.
      *
@@ -610,20 +610,20 @@ class WP_Menu_Image
             'menu_item_image_type',
             'menu_item_image_notification'
         );
-        
+
         if ( isset( $_POST['menu_item_id'] ) ) {
             $post_id = $_POST['menu_item_id'];
         } else {
             return '';
         }
-        
+
         foreach ( $menu_image_settings as $setting_name ) {
             if ( isset( $_POST[$setting_name] ) ) {
                 update_post_meta( $post_id, "_{$setting_name}", esc_sql( $_POST[$setting_name] ) );
             }
         }
     }
-    
+
     /**
      * Save item settings while WPML sync menus.
      *
@@ -633,7 +633,7 @@ class WP_Menu_Image
     public function wp_update_nav_menu_item_action( $item_menu_id, $menu_item_db_id )
     {
         global  $sitepress, $icl_menus_sync ;
-        
+
         if ( class_exists( 'SitePress' ) && $sitepress instanceof SitePress && class_exists( 'ICLMenusSync' ) && $icl_menus_sync instanceof ICLMenusSync ) {
             static  $run_times = array() ;
             $menu_image_settings = array(
@@ -679,9 +679,9 @@ class WP_Menu_Image
                 break;
             }
         }
-    
+
     }
-    
+
     /**
      * Load menu image meta for each menu item.
      *
@@ -709,7 +709,7 @@ class WP_Menu_Image
         $item->menu_image_icon_type = $menu_item_type;
         return $item;
     }
-    
+
     /**
      * Filters the HTML attributes applied to a menu item's anchor element.
      *
@@ -734,29 +734,29 @@ class WP_Menu_Image
         $depth = null
     )
     {
-        
+
         if ( isset( $item->thumbnail_id ) && '' !== $item->thumbnail_id && $item->thumbnail_id > 0 ) {
             $this->setProcessed( $item->ID );
             $position = ( $item->title_position ? $item->title_position : apply_filters( 'menu_image_default_title_position', 'after' ) );
             $class = ( !empty($atts['class']) ? $atts['class'] : '' );
             $class .= " menu-image-title-{$position}";
-            
+
             if ( $item->thumbnail_hover_id ) {
                 $class .= ' menu-image-hovered';
             } elseif ( $item->thumbnail_id ) {
                 $class .= ' menu-image-not-hovered';
             }
-            
+
             // Fix dropdown menu for Flatsome theme.
             if ( !empty($args->walker) && class_exists( 'FlatsomeNavDropdown' ) && $args->walker instanceof FlatsomeNavDropdown && !is_null( $depth ) && $depth === 0 ) {
                 $class .= ' nav-top-link';
             }
             $atts['class'] = trim( $class );
         }
-        
+
         return $atts;
     }
-    
+
     /**
      * Replacement default menu item output.
      *
@@ -787,16 +787,15 @@ class WP_Menu_Image
         $position = '';
         $class = '';
         // Check if we will add an icon or image to the menu item.
-        
+
         if ( $item->menu_image_icon_type != 'icon' ) {
-            
             if ( isset( $item->thumbnail_id ) && '' !== $item->thumbnail_id && $item->thumbnail_id > 0 ) {
                 $image_size = ( $item->image_size ? $item->image_size : apply_filters( 'menu_image_default_size', 'menu-36x36' ) );
                 $position = ( $item->title_position ? $item->title_position : apply_filters( 'menu_image_default_title_position', 'after' ) );
                 $class = "menu-image-title-{$position}";
                 $this->setUsedAttachments( $image_size, $item->thumbnail_id );
-                
-                if ( $item->thumbnail_hover_id ) {
+
+                if ( $item->thumbnail_hover_id && $item->thumbnail_hover_id != $item->thumbnail_id) {
                     $this->setUsedAttachments( $image_size, $item->thumbnail_hover_id );
                     $hover_image_src = wp_get_attachment_image_src( $item->thumbnail_hover_id, $image_size );
                     $margin_size = $hover_image_src[1];
@@ -825,10 +824,10 @@ class WP_Menu_Image
                         "class=menu-image {$class}"
                     );
                 }
-                
+
                 $class .= ' menu-image-title';
             }
-        
+
         } else {
             $selected_icon = get_post_meta( $item->ID, '_menu_image_icon', true );
             $position = ( $item->title_position ? $item->title_position : apply_filters( 'menu_image_default_title_position', 'after' ) );
@@ -836,7 +835,7 @@ class WP_Menu_Image
             $image = '<span class="dashicons ' . $selected_icon . ' ' . $position . '-menu-image-icons"></span>';
             $class .= ' menu-image-title';
         }
-        
+
         $none = '';
         // Sugar.
         $image = apply_filters( 'menu_image_img_html', $image );
@@ -866,7 +865,7 @@ class WP_Menu_Image
         }
         return $title;
     }
-    
+
     /**
      * Replacement default menu item output.
      *
@@ -897,7 +896,7 @@ class WP_Menu_Image
         $class = "menu-image-title-{$position}";
         $this->setUsedAttachments( $image_size, $item->thumbnail_id );
         $image = '';
-        
+
         if ( $item->thumbnail_hover_id ) {
             $this->setUsedAttachments( $image_size, $item->thumbnail_hover_id );
             $hover_image_src = wp_get_attachment_image_src( $item->thumbnail_hover_id, $image_size );
@@ -929,7 +928,7 @@ class WP_Menu_Image
             );
             $class .= ' menu-image-not-hovered';
         }
-        
+
         $attributes_array['class'] = $class;
         /**
          * Filter the menu link attributes.
@@ -973,7 +972,7 @@ class WP_Menu_Image
         $item_output .= "</a>{$args->after}";
         return $item_output;
     }
-    
+
     /**
      * Loading additional stylesheet.
      *
@@ -990,24 +989,24 @@ class WP_Menu_Image
         wp_enqueue_style( 'menu-image' );
         wp_enqueue_style( 'dashicons' );
     }
-    
+
     public function wp_menu_image_fontawesome_admin_notice()
     {
         ?>
 
-			<div class="wp-menu-image-notice notice notice-success is-dismissible" data-ajax-nonce="<?php 
+			<div class="wp-menu-image-notice notice notice-success is-dismissible" data-ajax-nonce="<?php
         echo  wp_create_nonce( 'menu-image-fa-security-nonce' ) ;
         ?>">
 				<span class="dashicons dashicons-warning"></span>
 
-				<?php 
+				<?php
         _e( '<strong>Menu Image - In order to use the FontAwesome icons you need to install the official FontAwesome plugin and select the SVG tecnhonoly. Check <a href="https://www.wpmenuimage.com/knowledgebase/general-options/add-icons-to-menu-items/?utm_source=menu-image-settings&utm_medium=user%20website&utm_campaign=install-fontawesome#fontawesome" target="_blank" >here</a> how to do it.</strong>', 'mobile-menu' );
         ?>
 			</div>
 
-	<?php 
+	<?php
     }
-    
+
     /**
      * Dismiss the Menu Image Fontawesome Notice.
      */
@@ -1018,7 +1017,7 @@ class WP_Menu_Image
         }
         wp_die();
     }
-    
+
     /**
      * Load Admin scripts
      */
@@ -1031,17 +1030,17 @@ class WP_Menu_Image
                 add_action( 'admin_notices', array( $this, 'wp_menu_image_fontawesome_admin_notice' ) );
             }
         }
-        
+
         if ( 'nav-menus.php' === $hook ) {
             wp_enqueue_style( 'wp-color-picker' );
             wp_enqueue_script( 'wp-color-picker' );
         }
-        
+
         if ( 'nav-menus.php' === $hook || 'toplevel_page_menu-image-options' === $hook ) {
             wp_enqueue_style( 'menu-image-admin-css', plugins_url( 'includes/css/menu-image-admin.css', __FILE__ ) );
         }
     }
-    
+
     /**
      * Loading media-editor script ot nav-menus page.
      *
@@ -1067,7 +1066,7 @@ class WP_Menu_Image
         wp_enqueue_media();
         wp_enqueue_style( 'editor-buttons' );
     }
-    
+
     /**
      * When menu item removed remove menu image metadata.
      */
@@ -1075,7 +1074,7 @@ class WP_Menu_Image
     {
         $menu_item_id = (int) $_REQUEST['menu-item'];
         check_admin_referer( 'delete-menu_item_image_' . $menu_item_id );
-        
+
         if ( is_nav_menu_item( $menu_item_id ) && has_post_thumbnail( $menu_item_id ) ) {
             delete_post_thumbnail( $menu_item_id );
             delete_post_meta( $menu_item_id, '_thumbnail_hover_id' );
@@ -1083,9 +1082,9 @@ class WP_Menu_Image
             delete_post_meta( $menu_item_id, '_menu_item_image_title_position' );
             //TODO include other postmeta
         }
-    
+
     }
-    
+
     /**
      * Output HTML for the menu item images.
      *
@@ -1117,7 +1116,7 @@ class WP_Menu_Image
             ( $thumbnail_id ? '<a href="#" class="remove-post-thumbnail">' . __( 'Remove', 'menu-image' ) . '</a>' : '' )
         );
         // Menu image on hover if enabled.
-        
+
         if ( '1' == get_option( 'menu_image_hover', '1' ) ) {
             $hover_id = get_post_meta( $item_id, '_thumbnail_hover_id', true );
             $content .= sprintf(
@@ -1137,20 +1136,20 @@ class WP_Menu_Image
                 ( $hover_id ? '<a href="#" class="remove-post-thumbnail hover-image">' . __( 'Remove', 'menu-image' ) . '</a>' : '' )
             );
         }
-        
+
         return $content;
     }
-    
+
     public function menu_image_build_dashicons_list( $item_id )
     {
         $dashicons = [];
-        $dashicons = explode( ',', 'dashicons-menu, 
-			dashicons-menu-alt, 
-			dashicons-menu-alt2, 
-			dashicons-menu-alt3, 
-			dashicons-admin-site, 
-			dashicons-admin-site-alt, 
-			dashicons-admin-site-alt2, 
+        $dashicons = explode( ',', 'dashicons-menu,
+			dashicons-menu-alt,
+			dashicons-menu-alt2,
+			dashicons-menu-alt3,
+			dashicons-admin-site,
+			dashicons-admin-site-alt,
+			dashicons-admin-site-alt2,
 			dashicons-admin-site-alt3,
 			dashicons-admin-site-alt2,
 			dashicons-admin-site-alt3,
@@ -1489,27 +1488,27 @@ class WP_Menu_Image
         // Get the selected icon if it exists.
         $selected_icon = get_post_meta( $item_id, '_menu_image_icon', true );
         // Dashicons Icons List.
-        
+
         if ( strpos( $selected_icon, 'dashicons' ) !== false || $selected_icon == '' ) {
             echo  '<div class="menu-image-dashicons-list active">' ;
         } else {
             echo  '<div class="menu-image-dashicons-list">' ;
         }
-        
+
         // Loop through the list of icons.
         foreach ( $dashicons as $icon ) {
             $icon = preg_replace( '/\\s+/', '', $icon );
-            
+
             if ( $icon == $selected_icon ) {
                 echo  '<span class="dashicons ' . $icon . ' menu-item-icon-selected"></span>' ;
             } else {
                 echo  '<span class="dashicons ' . $icon . '"></span>' ;
             }
-        
+
         }
         echo  '</div>' ;
     }
-    
+
     public function menu_image_build_fa_list( $item_id )
     {
         $icons_brand = [];
@@ -1521,14 +1520,14 @@ class WP_Menu_Image
         // Get the selected icon if it exists.
         $selected_icon = get_post_meta( $item_id, '_menu_image_icon', true );
         // Fontawesome Solid Icons List.
-        
+
         if ( strpos( $selected_icon, 'fa-' ) !== false ) {
             echo  '<div class="menu-image-fontawesome-list active">' ;
         } else {
             echo  '<div class="menu-image-fontawesome-list">' ;
         }
-        
-        
+
+
         if ( !in_array( 'font-awesome/index.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
             _e( '<br><br><span>In order to use the FontAwesome icons you need to install the official FontAwesome plugin and select the SVG tecnhonoly. Check <a href="https://www.wpmenuimage.com/knowledgebase/general-options/add-icons-to-menu-items/?utm_source=menu-image-settings&utm_medium=user%20website&utm_campaign=install-fontawesome#fontawesome" target="_blank" >here</a> how to do it.', 'mobile-menu' );
         } else {
@@ -1537,45 +1536,45 @@ class WP_Menu_Image
             echo  '<div class="menu-image-fa-solid-list">' ;
             // Loop through the list of icons.
             foreach ( $fa_solid as $icon ) {
-                
+
                 if ( $icon == $selected_icon ) {
                     echo  '<i class="' . $icon . ' fa-2x menu-item-icon-selected"></i>' ;
                 } else {
                     echo  '<i class="' . $icon . ' fa-2x"></i>' ;
                 }
-            
+
             }
             echo  '</div>' ;
             // Fontawesome Regular Icons List.
             echo  '<div class="menu-image-fa-regular-list">' ;
             foreach ( $fa_regular as $icon ) {
-                
+
                 if ( $icon == $selected_icon ) {
                     echo  '<i class="' . $icon . ' fa-2x menu-item-icon-selected"></i>' ;
                 } else {
                     echo  '<i class="' . $icon . ' fa-2x"></i>' ;
                 }
-            
+
             }
             echo  '</div>' ;
             // Fontawesome Brands Icons List.
             echo  '<div class="active menu-image-fa-brands-list">' ;
             foreach ( $fa_brands as $icon ) {
-                
+
                 if ( $icon == $selected_icon ) {
                     echo  '<i class="' . $icon . ' fa-2x menu-item-icon-selected"></i>' ;
                 } else {
                     echo  '<i class="' . $icon . ' fa-2x"></i>' ;
                 }
-            
+
             }
             echo  '</div>' ;
         }
-        
+
         // Closing final div.
         echo  '</div>' ;
     }
-    
+
     /**
      * Output HTML for the menu item images section.
      *
@@ -1612,12 +1611,12 @@ class WP_Menu_Image
 			<!-- Title position -->
 			<div class="menu-image-field-holder">
 				<div class="menu-image-label">
-					<label><?php 
+					<label><?php
         _e( 'Title position', 'menu-image' );
         ?></label>
 				</div>
 				<div class="menu-image-field">
-				<?php 
+				<?php
         $positions = array(
             'hide'   => __( 'Hide', 'menu-image' ),
             'above'  => __( 'Above', 'menu-image' ),
@@ -1642,13 +1641,13 @@ class WP_Menu_Image
 			<!-- Icon/Image -->
 			<div class="menu-image-field-holder">
 				<div class="menu-image-label">
-					<label><?php 
+					<label><?php
         _e( 'Use Icon/image: ', 'menu-image' );
         ?></label>
 				</div>
 				<div class="menu-image-field">
 
-				<?php 
+				<?php
         $types = array(
             'image' => __( 'Image', 'menu-image' ),
             'icon'  => __( 'Icon', 'menu-image' ),
@@ -1669,7 +1668,7 @@ class WP_Menu_Image
 
 			<!-- Image header -->
 			<div class="menu-image-field-holder menu-item-images menu-item-image-type" style="min-height:70px">
-				<?php 
+				<?php
         echo  $content ;
         ?>
 			</div>
@@ -1678,21 +1677,21 @@ class WP_Menu_Image
 			<div class="menu-image-field-holder menu-item-image-type">
 				<div class="menu-image-label">
 					<label for="menu_item_image_size">
-						<?php 
+						<?php
         _e( 'Image size', 'menu-image' );
         ?>
 					</label>
 				</div>
-				<div class="menu-image-field">	
+				<div class="menu-image-field">
 					<select id="menu_item_image_size"
 							class="widefat edit-menu-item-image-size"
 							name="menu_item_image_size">
-						<option value='full' <?php 
+						<option value='full' <?php
         echo  ( $image_size == 'full' ? ' selected="selected"' : '' ) ;
-        ?>><?php 
+        ?>><?php
         _e( 'Original Size', 'menu-image' );
         ?></option>
-						<?php 
+						<?php
         foreach ( get_intermediate_image_sizes() as $size ) {
             printf(
                 "<option value='%s'%s>%s</option>\n",
@@ -1701,7 +1700,7 @@ class WP_Menu_Image
                 ucfirst( $size )
             );
             ?>
-						<?php 
+						<?php
         }
         ?>
 					</select>
@@ -1715,7 +1714,7 @@ class WP_Menu_Image
 					<li data-tab-id="fontawesome-list">Fontawesome</li>
 				</ul>
 
-			<?php 
+			<?php
         $this->menu_image_build_dashicons_list( $item_id );
         $this->menu_image_build_fa_list( $item_id );
         ?>
@@ -1726,77 +1725,77 @@ class WP_Menu_Image
 			<div class="menu-image-button-settings menu-image-container" style="display:none;">
 
 			<!-- Menu Image Premium button options -->
-			<?php 
+			<?php
         ?>
 					<p>Improve your site marketing by creating Call to action buttons. This is available in the Professional version.</p>
-					<div class="prodemo-imgs"> 
+					<div class="prodemo-imgs">
 						<h4>Some examples:</h4>
-						<img src='<?php 
+						<img src='<?php
         echo  MENU_IMAGE_PLUGIN_URL ;
         ?>includes/assets/img/pro-button-1.png'>
-						<img src='<?php 
+						<img src='<?php
         echo  MENU_IMAGE_PLUGIN_URL ;
         ?>includes/assets/img/pro-button-2.png'>
 					</div>
-					<p style="font-weight: 600;font-size:16px;">You would like to have the same in your website?<a href="<?php 
+					<p style="font-weight: 600;font-size:16px;">You would like to have the same in your website?<a href="<?php
         echo  $this->mi_fs->get_upgrade_url() ;
-        ?>&cta=upsell-button-upgrade-cta" class="mi-button-professional-upgrade"><?php 
+        ?>&cta=upsell-button-upgrade-cta" class="mi-button-professional-upgrade"><?php
         _e( 'Upgrade Now!', 'mobile-menu' );
         ?></a></p>
-					<p>Not sure if it has the right features?  <a href="<?php 
+					<p>Not sure if it has the right features?  <a href="<?php
         echo  $this->mi_fs->get_trial_url() ;
-        ?>"><?php 
+        ?>"><?php
         echo  esc_html( 'Start a Free trial', 'menu-image' ) ;
         ?></a></p>
-				<?php 
+				<?php
         // Close premium blok
         ?>
 			</div>
 
 			<div class="menu-image-notifications-settings menu-image-container" style="display:none;">
 			<!-- Menu Immage Premium badges and bubble options -->
-			<?php 
+			<?php
         ?>
 				<p>Grab your user attention with those notifications and badges.This is available in the Professional version.</p>
 				<div class="prodemo-imgs">
 					<h4>Some examples:</h4>
-					<img src='<?php 
+					<img src='<?php
         echo  MENU_IMAGE_PLUGIN_URL ;
         ?>includes/assets/img/pro-badge-1.png'>
-					<img src='<?php 
+					<img src='<?php
         echo  MENU_IMAGE_PLUGIN_URL ;
         ?>includes/assets/img/pro-badge-2.png'>
-					<img src='<?php 
+					<img src='<?php
         echo  MENU_IMAGE_PLUGIN_URL ;
         ?>includes/assets/img/pro-badge-3.png'>
 				</div>
-				<p style="font-weight: 600;font-size:16px;">You would like to have the same in your website?<a href="<?php 
+				<p style="font-weight: 600;font-size:16px;">You would like to have the same in your website?<a href="<?php
         echo  $this->mi_fs->get_upgrade_url() ;
-        ?>&cta=upsell-badge-upgrade-cta" class="mi-button-professional-upgrade"><?php 
+        ?>&cta=upsell-badge-upgrade-cta" class="mi-button-professional-upgrade"><?php
         _e( 'Upgrade Now!', 'mobile-menu' );
         ?></a></p>
-				<p>Not sure if it has the right features?  <a href="<?php 
+				<p>Not sure if it has the right features?  <a href="<?php
         echo  $this->mi_fs->get_trial_url() ;
-        ?>"><?php 
+        ?>"><?php
         echo  esc_html( 'Start a Free trial', 'menu-image' ) ;
         ?></a></p>
-			<?php 
+			<?php
         // Close premium blok
         ?>
 			</div>
 			<div class="menu-item-preview">
 				<h4>Preview</h4>
-				<span class="title-text"><?php 
+				<span class="title-text"><?php
         echo  $menu_title ;
         ?></span>
 
-				<?php 
+				<?php
         ?>
 
 			</div>
 		</div>
 
-		<?php 
+		<?php
         submit_button();
         $content = ob_get_clean();
         /**
@@ -1809,7 +1808,7 @@ class WP_Menu_Image
          */
         return apply_filters( 'admin_menu_item_thumbnail_html', $content, $item_id );
     }
-    
+
     /**
      * Update item thumbnail via ajax action.
      *
@@ -1825,34 +1824,34 @@ class WP_Menu_Image
         $thumbnail_id = intval( $_POST['thumbnail_id'] );
         $is_hovered = (bool) $_POST['is_hover'];
         check_ajax_referer( 'update-menu-item' );
-        
+
         if ( $thumbnail_id == '-1' ) {
-            
+
             if ( $is_hovered ) {
                 $success = delete_post_meta( $post_ID, '_thumbnail_hover_id' );
             } else {
                 $success = delete_post_thumbnail( $post_ID );
             }
-        
+
         } else {
-            
+
             if ( $is_hovered ) {
                 $success = update_post_meta( $post_ID, '_thumbnail_hover_id', $thumbnail_id );
             } else {
                 $success = set_post_thumbnail( $post_ID, $thumbnail_id );
             }
-        
+
         }
-        
-        
+
+
         if ( $success ) {
             $return = $this->wp_post_thumbnail_only_html( $post_ID );
             ( $json ? wp_send_json_success( $return ) : wp_die( $return ) );
         }
-        
+
         wp_die( 0 );
     }
-    
+
     /**
      * Prevent jetpack Phonon applied for menu item images.
      *
@@ -1865,7 +1864,7 @@ class WP_Menu_Image
     {
         return $this->isAttachmentUsed( $data['attachment_id'], $data['size'] );
     }
-    
+
     /**
      * Set used attachment ids.
      *
@@ -1876,7 +1875,7 @@ class WP_Menu_Image
     {
         $this->used_attachments[$size][] = $id;
     }
-    
+
     /**
      * Check if attachment is used in menu items.
      *
@@ -1887,7 +1886,7 @@ class WP_Menu_Image
      */
     public function isAttachmentUsed( $id, $size = null )
     {
-        
+
         if ( !is_null( $size ) ) {
             return is_string( $size ) && isset( $this->used_attachments[$size] ) && in_array( $id, $this->used_attachments[$size] );
         } else {
@@ -1898,9 +1897,9 @@ class WP_Menu_Image
             }
             return false;
         }
-    
+
     }
-    
+
     /**
      * Filters the list of attachment image attributes.
      *
@@ -1920,7 +1919,7 @@ class WP_Menu_Image
         }
         return $attr;
     }
-    
+
     /**
      * Mark item as processed to prevent re-processing it again.
      *
@@ -1930,7 +1929,7 @@ class WP_Menu_Image
     {
         $this->processed[] = $id;
     }
-    
+
     /**
      * Check if was already processed.
      *

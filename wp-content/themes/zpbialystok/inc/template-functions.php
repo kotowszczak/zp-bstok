@@ -440,7 +440,6 @@ function zp_bialystok_get_attachment_image_attributes( $attr, $attachment, $size
 	}
 
 	if ( $width && $height ) {
-
 		// Add style.
 		$attr['style'] = isset( $attr['style'] ) ? $attr['style'] : '';
 		$attr['style'] = 'width:100%;height:' . round( 100 * $height / $width, 2 ) . '%;max-width:' . $width . 'px;' . $attr['style'];
@@ -448,4 +447,4 @@ function zp_bialystok_get_attachment_image_attributes( $attr, $attachment, $size
 
 	return $attr;
 }
-add_filter( 'wp_get_attachment_image_attributes', 'zp_bialystok_get_attachment_image_attributes', 10, 3 );
+

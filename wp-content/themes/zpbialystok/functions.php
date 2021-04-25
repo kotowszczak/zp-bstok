@@ -636,7 +636,6 @@ function zpbialystok_add_ie_class() {
 }
 add_action( 'wp_footer', 'zpbialystok_add_ie_class' );
 
-
 function zpbialystok_asset($path)
 {
 	return get_template_directory_uri() . $path ;
