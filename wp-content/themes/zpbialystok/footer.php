@@ -42,7 +42,7 @@
 		<?php endif; ?>
 
 		<div class="update-date">
-			Data aktualizacji: <span class="date">11.04.2021</span>
+			Data aktualizacji: <span class="date"><?php echo zp_get_page_last_modified_date(); ?></span>
 		</div>
 	</footer>
 </div><!-- #page -->

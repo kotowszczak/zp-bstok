@@ -645,8 +645,19 @@ function zp_get_page_last_modified_date()
 {
 	global $wpdb;
 
-	/** @var wpdb $wpdb */
-	$result = $wpdb->get_row( "SELECT max(post_modified) last_modified_date FROM {$wpdb->prefix}posts WHERE post_type = 'page'");
+	$post = get_post();
+	$last_post_modified = null;
 
-	return substr($result->last_modified_date, 0, 10);
+	if ($post) {
+		$last_post_modified = $post->post_modified;
+	}
+
+	if (! $last_post_modified) {
+		/** @var wpdb $wpdb */
+		$result = $wpdb->get_row( "SELECT max(post_modified) last_modified_date FROM {$wpdb->prefix}posts WHERE post_type = 'page'");
+
+		$last_post_modified = $result->last_modified_date;
+	}
+
+	return $last_post_modified ? substr($last_post_modified, 0, 10) : '2021-04-21';
 }
