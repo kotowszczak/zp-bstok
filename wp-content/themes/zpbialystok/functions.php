@@ -470,6 +470,30 @@ function zp_bialystok_scripts() {
 		wp_get_theme()->get( 'Version' ),
 		true
 	);
+
+	wp_enqueue_script(
+		'zp-bialystok-jquery-script',
+		get_template_directory_uri() . '/assets/js/jquery-3.3.1.slim.min.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+
+	wp_enqueue_script(
+		'zp-bialystok-bootstrap-script',
+		get_template_directory_uri() . '/assets/js/bootstrap.min.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+
+	wp_enqueue_script(
+		'zp-bialystok-functions-script',
+		get_template_directory_uri() . '/assets/js/functions.js',
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'zp_bialystok_scripts' );
 

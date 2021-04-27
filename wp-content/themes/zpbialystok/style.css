@@ -1638,16 +1638,17 @@ a {
 }
 
 a:hover {
-	text-decoration-style: dotted;
+	text-decoration: none;
+	color: #0000ff;
 	text-decoration-skip-ink: none;
 }
 
 .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button) {
 
 	/* Only visible in Windows High Contrast mode */
-	outline: 2px solid transparent;
+	outline: 2px solid #0000ff;
+	color: #0000ff;
 	text-decoration-skip-ink: none;
-	background: rgba(255, 255, 255, 0.9);
 }
 
 .is-dark-theme .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button) {
@@ -1678,7 +1679,6 @@ a:hover {
 
 .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button).skip-link:focus {
 	color: #21759b;
-	background-color: #f1f1f1;
 }
 
 .site a:focus:not(.wp-block-button__link):not(.wp-block-file__button).custom-logo-link {
@@ -5950,7 +5950,8 @@ body {
 
 }
 
-#top-navigation li.menu-item a:hover {
+#top-navigation li.menu-item a:hover,
+#top-navigation li.menu-item a:focus {
     text-decoration: none;
     color: #0000FF;
 }
@@ -5979,7 +5980,8 @@ body {
     padding-right: 5px;
 }
 
-#wcag-btns a:hover {
+#wcag-btns a:hover,
+#wcag-btns a:focus {
     color: #0000FF;
 }
 
@@ -6046,6 +6048,10 @@ body.home #site-navigation li.nav-item.home-link {
 #site-navigation li.menu-item a:hover {
     color: #0000FF;
     text-decoration: none;
+}
+
+#site-navigation li.menu-item a:focus {
+	color: #0000ff;
 }
 
 #primary {

@@ -46,6 +46,36 @@ html.high-contrast aside.left-sidebar li.nav-item {
 }
 
 
+html.large-font body {
+    font-size: var(--global--font-size-lg);
+}
+
+html.large-font .site-branding .site-title {
+    font-size: 32px;
+}
+
+html.large-font .site-branding .motto {
+    font-size: 16px;
+}
+
+html.large-font #top-navigation li.menu-item a {
+    font-size: 21px;
+}
+
+html.large-font #site-navigation li.menu-item {
+    font-size: 22px;
+}
+
+html.large-font #site-navigation li.menu-item a {
+    font-size: 21px;
+}
+
+html.large-font #footer-menu,
+html.large-font #footer .update-date   {
+    font-size: 17px;
+}
+
+
 
 
 
