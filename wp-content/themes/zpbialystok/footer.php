@@ -14,6 +14,14 @@
 ?>
 			</main><!-- #main -->
 		</div><!-- #primary -->
+
+		<?php if (! is_front_page()): ?>
+			<section class="contact">
+			<?php
+				get_template_part( 'template-parts/content/contact' );
+			?>
+			</section>
+		<?php endif; ?>
 	</div><!-- #content -->
 
 	<?php

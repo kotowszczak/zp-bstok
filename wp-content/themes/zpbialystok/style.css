@@ -9,7 +9,7 @@ Description: Szablon dla Zakładu Poprawczego w Białymstoku
 Requires at least: 5.3
 Tested up to: 5.7
 Requires PHP: 5.6
-Version: 1.0
+Version: 1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: zp
@@ -6224,3 +6224,32 @@ body.home #content article.page .fax {
 #menu-item-40 img {
 	height: 24px;
 }
+
+ol.upper-alpha,
+ul.upper-alpha {
+	list-style-type: upper-alpha;
+}
+
+ol.lower-alpha,
+ul.lower-alpha  {
+	list-style-type: lower-alpha;
+}
+
+section.contact {
+	background-color: white;
+	min-width: 400px;
+	font-size: 16px;
+}
+
+section.contact > div.content {
+	border-left: solid 5px #DC143C;
+	padding: 20px;
+}
+
+section.contact h3 {
+	padding-bottom: 15px;
+}
+section.contact p {
+	margin-bottom: 15px;
+}
+

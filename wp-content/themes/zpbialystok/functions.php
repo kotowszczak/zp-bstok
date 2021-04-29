@@ -685,3 +685,25 @@ function zp_get_page_last_modified_date()
 
 	return $last_post_modified ? substr($last_post_modified, 0, 10) : '2021-04-21';
 }
+
+$GLOBALS['zp_page_contact_section'] = false;
+
+/**
+ * Włącza sekcję kontaktu na stronie
+ *
+ * @return void
+ */
+function zp_enable_page_contact_section()
+{
+	$GLOBALS['zp_page_contact_section'] = true;
+}
+
+/**
+ * Zwraca true, jeśli na danej stronie jest włączona sekcja kontaktu
+ *
+ * @return boolean
+ */
+function zp_page_has_contact_section()
+{
+	return isset($GLOBALS['zp_page_contact_section']) && $GLOBALS['zp_page_contact_section'] === true;
+}
