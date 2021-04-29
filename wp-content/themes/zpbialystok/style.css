@@ -6106,38 +6106,34 @@ body.home #content article.page .fax {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (max-width: 1200px) {
     #site-navigation {
-        width: 30%;
+        width: 35%;
     }
 
     #content .page-contents {
-        width: 70%;
+        width: 65%;
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
-	#content {
-		flex-wrap: wrap;
-	}
-
     #site-navigation {
-        width: 30%;
+		width: 32%;
     }
-
     #primary  {
-        width: 70%;
+        width: 68%;
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
-    #site-navigation {
-		position: absolute;
-		width: 100%;
-    }
 
     #primary {
         width: 100%;
+	}
+
+    #site-navigation {
+		position: absolute;
+		width: 100%;
     }
 
     body.home #content article.page {
@@ -6241,19 +6237,19 @@ ul.lower-alpha  {
 
 section.contact {
 	/* background-color: white; */
-	min-width: 400px;
+	min-width: 350px;
 	font-size: 16px;
 }
 
 @media (max-width: 1200px) {
 	section.contact {
-		min-width: 350px;
+		min-width: 300px;
 	}
 }
 
 @media (max-width: 992px) {
 	section.contact {
-		width: 100%
+		display: none;
 	}
 }
 
@@ -6263,13 +6259,10 @@ section.contact > div.content {
     margin-left: 5px;
 }
 
-
-
-
-
 section.contact h3 {
 	padding-bottom: 15px;
 }
+
 section.contact p {
 	margin-bottom: 15px;
 }
