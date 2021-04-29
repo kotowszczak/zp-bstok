@@ -6011,7 +6011,7 @@ body {
 }
 
 #content {
-    padding: 0;
+	padding: 0;
 }
 
 #site-navigation {
@@ -6055,8 +6055,8 @@ body.home #site-navigation li.nav-item.home-link {
 }
 
 #primary {
-    width: 80%;
 	overflow: hidden;
+	width: 80%
 }
 
 body.home #primary  {
@@ -6116,6 +6116,10 @@ body.home #content article.page .fax {
 
 /* Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
+	#content {
+		flex-wrap: wrap;
+	}
+
     #site-navigation {
         width: 30%;
     }
@@ -6239,6 +6243,18 @@ section.contact {
 	background-color: white;
 	min-width: 400px;
 	font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+	section.contact {
+		min-width: 350px;
+	}
+}
+
+@media (max-width: 992px) {
+	section.contact {
+		width: 100%
+	}
 }
 
 section.contact > div.content {
