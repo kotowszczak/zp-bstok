@@ -6240,7 +6240,7 @@ ul.lower-alpha  {
 }
 
 section.contact {
-	background-color: white;
+	/* background-color: white; */
 	min-width: 400px;
 	font-size: 16px;
 }
@@ -6258,9 +6258,14 @@ section.contact {
 }
 
 section.contact > div.content {
-	border-left: solid 5px #DC143C;
-	padding: 20px;
+	border-left: solid 3px #0751AB;
+	padding: 8px 0px 0px 10px;
+    margin-left: 5px;
 }
+
+
+
+
 
 section.contact h3 {
 	padding-bottom: 15px;
