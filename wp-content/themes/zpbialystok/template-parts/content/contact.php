@@ -2,13 +2,13 @@
     <h3>Kontakt</h3>
 
     <p class="name">
-        Zakład Poprawczy<br>
+        Zakład Poprawczy w Białymstoku<br>
         15-181 Białystok<br>
         ul. 42 Pułku Piechoty 117
     </p>
 
     <p class="dyrektor">
-        Dyrektor ZP w Białymstoku: <br>
+        Dyrektor: <br>
         Paweł Niewodowski
     </p>
 
@@ -27,8 +27,6 @@
             alternate_email
             <span class="sr-only">Ikonka małpy</span>
         </span>
-
-
         sekretariat@bialystok.zp.gov.pl
     </p>
 </div>
