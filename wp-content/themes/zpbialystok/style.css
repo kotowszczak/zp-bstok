@@ -210,7 +210,7 @@ Zakład Poprawczy Białystok WordPress Theme, (C) 2020 WordPress.org
 	--button--color-text: var(--global--color-background);
 	--button--color-text-hover: var(--global--color-secondary);
 	--button--color-text-active: var(--global--color-secondary);
-	--button--color-background: var(--global--color-secondary);
+	--button--color-background: #0751AB;
 	--button--color-background-active: var(--global--color-background);
 	--button--font-family: var(--global--font-primary);
 	--button--font-size: var(--global--font-size-base);
@@ -1758,7 +1758,7 @@ input[type=reset]:not(:hover):not(:active):not(.has-background),
 .wp-block-search .wp-block-search__button:not(:hover):not(:active):not(.has-background),
 .wp-block-button .wp-block-button__link:not(:hover):not(:active):not(.has-background),
 .wp-block-file a.wp-block-file__button:not(:hover):not(:active):not(.has-background) {
-	background-color: var(--global--color-primary);
+	background-color: var(--button--color-background);
 }
 
 .has-background .site .button:not(:hover):not(:active):not(.has-background),
@@ -6023,7 +6023,7 @@ body.home #site-navigation li.nav-item.home-link {
 }
 
 #site-navigation ul.nav {
-    margin-right: 15px;
+    margin-right: 0px;
     margin-left: 15px;
 }
 
@@ -6057,6 +6057,10 @@ body.home #site-navigation li.nav-item.home-link {
 #primary {
 	overflow: hidden;
 	width: 80%
+}
+
+#main {
+	padding: 0 10px;
 }
 
 body.home #primary  {
@@ -6267,3 +6271,21 @@ section.contact p {
 	margin-bottom: 15px;
 }
 
+#wpmem_login .button_div, #wpmem_reg .button_div {
+	text-align: left !important;
+}
+
+#wpmem_login .button_div input,
+#wpmem_login .button_div label {
+	vertical-align: middle;
+}
+
+#wpmem_login .button_div label:after {
+	content: "";
+	display: block;
+}
+
+#wpmem_login .button_div input.buttons {
+	margin-top: 10px;
+	margin-left: -10px;
+}
